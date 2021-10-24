@@ -16,7 +16,11 @@ const config: webpack.Configuration = {
         filename: '[name].[contenthash].js',
     },
     plugins: [
-        new HtmlWebpackPlugin(),
+        new HtmlWebpackPlugin({
+            title: 'hw6',
+            template: path.resolve(__dirname, './src/index.html'),
+            filename: 'index.html'
+        }),
         new ModuleLogger(),
         new StatoscopePlugin({
             saveStatsTo: 'stats.json',
@@ -25,13 +29,34 @@ const config: webpack.Configuration = {
         }),
     ],
     resolve: {
+        extensions: ['.tsx', '.ts', '.js'],
         fallback: {
             "buffer": require.resolve("buffer"),
             "stream": false,
         },
     },
     module: {
-    },
+        rules: [
+            {
+                test: /\.tsx?$/, 
+                use: [
+                    {
+                        loader: 'babel-loader', 
+                        options: {
+                            presets: ['@babel/preset-env']
+                        }
+                    }, 
+                    {
+                        loader: 'ts-loader',
+                        options: {
+                            transpileOnly: true
+                        }
+                    }
+            ], 
+                exclude: /node_modules/
+            }
+        ]
+    }
 };
 
 export default config;

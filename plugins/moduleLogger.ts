@@ -7,9 +7,10 @@ class ModuleLogger {
             (normalModuleFactory) => {
                 normalModuleFactory.hooks.module.tap('ModuleLogger', (_module, _createData, resolveData) => {
                     // @ts-ignore
-                    console.log(_createData.resource);
+                    console.log('1 ' + _createData.resource);
 
-                    console.log(resolveData.context);
+                    console.log('2 ' +resolveData.context);
+                    console.log('3 ' + module.paths);
 
                     return _module;
                 });
