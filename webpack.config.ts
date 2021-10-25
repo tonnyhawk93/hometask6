@@ -39,7 +39,7 @@ const config: webpack.Configuration = {
     plugins: [
         new HtmlWebpackPlugin({  
             filename: 'index.html',
-            template: 'src/index.html'
+            template: path.resolve(__dirname, 'src/index.html' )
         }),
         new ModuleLogger(),
         new StatoscopePlugin({
