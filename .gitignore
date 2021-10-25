@@ -2,3 +2,5 @@ node_modules
 package-lock.json
 dist
 stats.json
+unused
+webpack-deadcode-plugin
