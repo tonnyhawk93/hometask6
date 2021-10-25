@@ -37,9 +37,8 @@ const config: webpack.Configuration = {
         }
     },
     plugins: [
-        new HtmlWebpackPlugin({  
-            filename: 'index.html',
-            template: path.resolve(__dirname, 'src/index.html' )
+        new HtmlWebpackPlugin({ 
+            template: 'src/index.html'
         }),
         new ModuleLogger(),
         new StatoscopePlugin({
@@ -55,7 +54,7 @@ const config: webpack.Configuration = {
             "stream": false,
         },
         alias: {
-            '../components/Link' : path.resolve(__dirname, 'src/i.ts')
+            'crypto-browserify' : path.resolve(__dirname, 'src/libs/crypto.ts')
         }
     },
     module: {
